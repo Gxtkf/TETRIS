@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тетрис - Древний Египет</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <div class="game-section">
+                <h1>🟦 ТЕТРИС - Квиз про Древний Египет 🏛️</h1>
+                
+                <div class="game-wrapper">
+                    <div class="game-info">
+                        <div class="info-box">
+                            <div class="label">Очки</div>
+                            <div class="value" id="score">0</div>
+                        </div>
+                        <div class="info-box">
+                            <div class="label">Уровень</div>
+                            <div class="value" id="level">1</div>
+                        </div>
+                        <div class="info-box">
+                            <div class="label">Линий</div>
+                            <div class="value" id="lines">0</div>
+                        </div>
+                    </div>
+
+                    <div class="game-board-container">
+                        <canvas id="gameBoard" width="300" height="600" tabindex="0"></canvas>
+                    </div>
+
+                    <div class="next-piece">
+                        <div class="label">Следующая фигура</div>
+                        <canvas id="nextPiece" width="100" height="100"></canvas>
+                    </div>
+
+                    <div class="controls">
+                        <button id="startBtn" class="btn btn-primary">Начать игру</button>
+                        <button id="pauseBtn" class="btn btn-secondary" disabled>Пауза</button>
+                        <p class="keyboard-hint">⬅️ ➡️ ⬇️ - движение | ⬆️ - поворот</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leaderboard-section">
+                <h2>🏆 Таблица лидеров</h2>
+                <div id="leaderboard" class="leaderboard-table">
+                    <p class="empty-message">Пока нет рекордов. Начните игру!</p>
+                </div>
+                <button id="clearLeaderBtn" class="btn btn-small">Очистить таблицу</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="quiz-header">
+                <h2>📜 Вопрос про Древний Египет</h2>
+                <div class="timer-bar">
+                    <div id="timerFill" class="timer-fill"></div>
+                </div>
+                <div class="timer-text" id="timerText">10</div>
+            </div>
+
+            <div class="quiz-body">
+                <p id="questionText" class="question"></p>
+                <div id="answersContainer" class="answers-container"></div>
+            </div>
+
+            <div class="bonus-info" id="bonusInfo" style="display: none;">
+                <p>⏱️ Бонус за скорость: +<span id="bonusPoints">0</span> очков!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal hidden">
+        <div class="modal-content game-over">
+            <h2>ИГРА ОКОНЧЕНА</h2>
+            <div class="final-stats">
+                <p><strong>Итоговые очки:</strong> <span id="finalScore">0</span></p>
+                <p><strong>Собрано линий:</strong> <span id="finalLines">0</span></p>
+                <p><strong>Уровень:</strong> <span id="finalLevel">1</span></p>
+            </div>
+
+            <div class="save-record">
+                <input type="text" id="playerName" placeholder="Введите ваше имя" maxlength="20">
+                <button id="saveRecordBtn" class="btn btn-primary">Сохранить рекорд</button>
+                <button id="newGameBtn" class="btn btn-secondary">Новая игра</button>
+            </div>
+
+            <div id="recordMessage" class="record-message hidden"></div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
